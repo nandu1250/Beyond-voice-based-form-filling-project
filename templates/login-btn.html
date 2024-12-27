@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voice-Based Login Page</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Sacramento&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #697fac;
+            color: #333;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            font-family: 'Sacramento', cursive;
+            color:#17e243;
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
+
+        .input-container {
+            position: relative;
+            width: 80%;
+            margin: 10px 0;
+        }
+
+        input[type="text"], input[type="email"], input[type="password"] {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+
+        .material-icons {
+            position: absolute;
+            right: 15px;
+            top: 15px;
+            font-size: 24px;
+            cursor: pointer;
+            color: #007bff;
+        }
+
+        .eye-icon {
+            right: 50px; /* Positioned before the mic icon */
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            cursor: pointer;
+            margin: 0 10px;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .signup-button {
+            background-color: #007bff;
+        }
+
+        .signup-button:hover {
+            background-color: #0056b3;
+        }
+
+        .footer {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Login</h2>
+        <form id="loginForm" action="/submit_login" method="POST">
+            <div class="input-container">
+                <input type="email" id="email" name="email" placeholder="Email" required>
+                <span class="material-icons mic-icon" onclick="startVoiceInput('email')">mic</span>
+            </div>
+
+            <div class="input-container">
+                <input type="password" id="password" name="password" placeholder="Password" required>
+                <span class="material-icons eye-icon" onclick="togglePasswordVisibility()">visibility</span>
+                <span class="material-icons mic-icon" onclick="startVoiceInput('password')">mic</span>
+            </div>
+
+            <div class="button-container">
+                <a href="index.html">
+                    <button type="button" class="login-button">Login</button>
+                </a>
+            </div>
+            
+        </form>
+
+        <div class="footer">
+            <p>Forgot Password? <a href="#">Click here</a></p>
+        </div>
+    </div>
+
+    <script>
+        function startVoiceInput(field) {
+            if (!('webkitSpeechRecognition' in window)) {
+                alert("Sorry, your browser does not support voice recognition.");
+                return;
+            }
+
+            const recognition = new webkitSpeechRecognition();
+            recognition.continuous = false;
+            recognition.interimResults = false;
+            recognition.lang = 'en-US';
+
+            recognition.start();
+
+            recognition.onresult = function(event) {
+                const result = event.results[0][0].transcript;
+                fillFormField(field, result);
+            };
+
+            recognition.onerror = function(event) {
+                console.error("Error occurred: " + event.error);
+            };
+        }
+
+        function fillFormField(field, voiceInput) {
+            voiceInput = voiceInput.trim().replace(/\s+/g, ' '); // Remove extra spaces
+
+            if (field === 'email') {
+                // Replace 'at' with '@' and 'dot' with '.' and remove spaces
+                voiceInput = voiceInput.replace(/at/g, '@').replace(/dot/g, '.').replace(/\s+/g, '');
+                document.getElementById("email").value = voiceInput.toLowerCase(); // Convert email to lowercase
+            } else if (field === 'password') {
+                document.getElementById("password").value = voiceInput;
+            }
+        }
+
+        function togglePasswordVisibility() {
+            const passwordField = document.getElementById("password");
+            const eyeIcon = document.querySelector(".eye-icon");
+
+            // Toggle the password visibility
+            if (passwordField.type === "password") {
+                passwordField.type = "text";
+                eyeIcon.textContent = "visibility_off"; // Change icon to "visibility_off"
+            } else {
+                passwordField.type = "password";
+                eyeIcon.textContent = "visibility"; // Change icon to "visibility"
+            }
+        }
+    </script>
+</body>
+</html>
