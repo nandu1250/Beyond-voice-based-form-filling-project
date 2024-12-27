@@ -1,0 +1,327 @@
+/* General Styling */
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    display: inline;
+}   
+
+/* Header Styling */
+.header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #333;
+    color: white;
+    position: fixed;
+    top: 0;
+    z-index: 1;
+}
+
+.logo {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #fff;
+    cursor: pointer;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.logo:hover {
+    color: #4CAF50;
+    transform: scale(1.1);
+}
+
+.logo span {
+    color: #4CAF50;
+}
+
+.signup-btn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s ease;
+}
+
+.signup-btn:hover {
+    background-color: #45a049;
+}
+
+/* Form Container Styling */
+.form-container {
+    width: 90%;
+    max-width: 500px;
+    margin: 100px auto 20px;
+    padding: 20px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h1, h2 {
+    color: #333;
+    text-align: center;
+}
+
+.section {
+    margin-bottom: 20px;
+}
+
+/* Label and Input Field Styling */
+label {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #555;
+    width: 100%;
+}
+
+label input, label select {
+    flex: 1;
+    padding: 8px;
+    margin-left: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    width: 100%;
+}
+
+label input:focus, label select:focus {
+    border-color: #4CAF50;
+    box-shadow: 0 0 5px rgba(76, 175, 80, 0.3);
+}
+
+/* Voice Icon Styling */
+.voice-icon {
+    background: none;
+    border: none;
+    font-size: 1.2em;
+    cursor: pointer;
+    margin-left: 10px;
+    color: #4CAF50;
+    transition: transform 0.3s ease;
+}
+
+.voice-icon:hover {
+    transform: scale(1.2);
+}
+
+/* Submit Button Styling */
+button[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+button[type="submit"]:hover {
+    background-color: #45a049;
+    transform: translateY(-2px);
+}
+
+/* Modal Styling */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+}
+
+.modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 400px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.modal-content h2 {
+    margin-top: 0;
+}
+
+.close {
+    float: right;
+    font-size: 1.5em;
+    cursor: pointer;
+    color: #333;
+    transition: color 0.3s ease;
+}
+
+.close:hover {
+    color: #4CAF50;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        padding: 10px;
+    }
+
+    .form-container {
+        width: 100%;
+        margin: 80px auto 20px;
+        padding: 15px;
+    }
+
+    label {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    label input, label select {
+        margin-left: 0;
+        width: 100%;
+    }
+}
+
+
+
+#signatureCanvas {
+    border: 2px solid #333;
+    background-color: #f9f9f9;
+    cursor: crosshair;
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+button#clearSignature {
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    padding: 10px;
+    font-size: 1em;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+button#clearSignature:hover {
+    background-color: #e60000;
+}
+
+
+
+.ml{
+    /* margin-left: 20%;
+    margin-right: 10%;
+    margin-top: 10%;
+    margin-bottom: 10%; */
+    width: 90%;
+    max-width: 700px;
+    margin: 100px auto 20px;
+    padding: 20px;
+    background: #dde0df;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.su{
+    margin-top: 5%;
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+#dynamic-text {
+    
+    transition: opacity 0.5s ease-in-out;
+}
+
+.heading-xlarge{
+    width: 90%;
+    max-width: 1000px;
+    margin: 100px auto 20px;
+    padding: 20px;
+    background: #b9a5ce;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 10%;
+    font-size: 70px;
+}
+
+.text-color-primary{
+    color: rgb(209, 221, 224);
+}
+
+
+/* Container for header links */
+.header-links {
+    display: flex;
+    justify-content: flex-end; /* Align to the right */
+    align-items: center;
+    padding: 5px 30px;
+    background-color: #77dd72; /* Light gray background */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+/* Styling for individual paragraphs containing the links */
+.header-links p {
+    margin: 0;
+    padding: 0;
+    font-size: 18px;
+    font-weight: 600;
+    color: #ffffff; /* Blue color */
+    margin-right: 30px; /* Spacing between the links */
+    transition: transform 0.3s ease, color 0.3s ease, letter-spacing 0.3s ease, background-color 0.3s ease, padding 0.3s ease;
+    cursor: pointer; /* Make it feel like a button */
+    border-radius: 25px; /* Rounded corners for button effect */
+    padding: 8px 20px; /* Padding to create button appearance */
+    background-color: transparent; /* Initially transparent */
+    border: 2px solid transparent; /* Border with transparent initial state */
+}
+
+/* Remove right margin for the last link */
+.header-links p:last-child {
+    margin-right: 0;
+}
+
+/* Styling for the links */
+.header-links a {
+    color: inherit; /* Inherit color from the paragraph */
+    text-decoration: none;
+    font-weight: inherit; /* Inherit font-weight from the paragraph */
+    transition: color 0.3s ease, transform 0.3s ease, letter-spacing 0.3s ease;
+}
+
+/* Hover effects for the paragraph elements */
+.header-links p:hover {
+    color: white; /* White text on hover */
+    background-color: #0e7313; /* Blue background */
+    transform: translateY(-2px); /* Slight upward shift */
+    border-color: #007bff; /* Blue border when hovered */
+    padding: 8px 25px; /* Slightly increase padding for a button effect */
+    letter-spacing: 1px; /* Add some letter spacing */
+}
+
+/* Added bottom border for a more dynamic effect */
+.header-links a:hover {
+    color: white; /* Text color change */
+    transform: scale(1.1); /* Slightly enlarge text on hover */
+    border-bottom: 2px solid #0056b3; /* Underline effect */
+}
