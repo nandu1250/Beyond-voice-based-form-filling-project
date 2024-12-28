@@ -1,0 +1,623 @@
+<header>
+    <div class="header-container">
+        <h1>Insure Now</h1>
+        <nav class="header-nav">
+            <a href="/signup" id="signup-link">Sign Up</a> |
+            <a href="/login" id="login-link">Login</a>
+        </nav>
+    </div>
+</header>
+<style>
+    /* Header Styles */
+    header {
+        background-color: #ef55c9; /* Dark background */
+        color: white;
+        padding: 10px 20px;
+        position: relative;
+        text-align: center;
+    }
+
+    .header-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .header-nav a {
+        color: white;
+        text-decoration: none;
+        margin-left: 10px;
+        font-size: 16px;
+    }
+
+    .header-nav a:hover {
+        text-decoration: underline;
+    }
+</style>
+
+
+<section class="personal-info-section">
+    <h2 id="personalInfoTitle">Personal Information</h2>
+    <label id="firstNameLabel">First Name:
+        <input type="text" name="firstName" id="firstName" placeholder="First Name">
+        <button type="button" class="voice-icon" onclick="startVoiceInput('firstName')">🎤</button>
+        <button type="button" class="speak-icon" onclick="speakQuestion('What is your first name?')">🔊</button>
+    </label>
+    <br>
+    <label id="middleNameLabel">Middle Name:
+        <input type="text" name="middleName" id="middleName" placeholder="Middle Name">
+        <button type="button" class="voice-icon" onclick="startVoiceInput('middleName')">🎤</button>
+        <button type="button" class="speak-icon" onclick="speakQuestion('What is your middle name?')">🔊</button>
+    </label>
+    <br>
+    <label id="lastNameLabel">Last Name:
+        <input type="text" name="lastName" id="lastName" placeholder="Last Name">
+        <button type="button" class="voice-icon" onclick="startVoiceInput('lastName')">🎤</button>
+        <button type="button" class="speak-icon" onclick="speakQuestion('What is your last name?')">🔊</button>
+    </label>
+    <br>
+    <label id="genderLabel">Gender:
+        <select name="gender" id="gender">
+            <option value="">Select</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Other">Other</option>
+        </select>
+        <button type="button" class="voice-icon" onclick="startVoiceInput('gender')">🎤</button>
+        <button type="button" class="speak-icon" onclick="speakQuestion('What is your gender?')">🔊</button>
+    </label>
+    <br>
+    <label id="ageLabel">Age:
+        <input type="number" name="age" id="age" placeholder="Age">
+        <button type="button" class="voice-icon" onclick="startVoiceInput('age')">🎤</button>
+        <button type="button" class="speak-icon" onclick="speakQuestion('What is your age?')">🔊</button>
+    </label>
+    <br>
+    <label id="statusLabel">Status:
+        <select name="status" id="status">
+            <option value="">Select</option>
+            <option value="Single">Single</option>
+            <option value="Married">Married</option>
+            <option value="Student">Student</option>
+            <option value="Employed">Employed</option>
+            <option value="Other">Other</option>
+        </select>
+        <button type="button" class="voice-icon" onclick="startVoiceInput('status')">🎤</button>
+        <button type="button" class="speak-icon" onclick="speakQuestion('What is your status?')">🔊</button>
+    </label>
+    <br>
+    <label id="dobLabel">Date of Birth:
+        <input type="date" name="dob" id="dob">
+        <button type="button" class="voice-icon" onclick="startVoiceInput('dob')">🎤</button>
+        <button type="button" class="speak-icon" onclick="speakQuestion('What is your date of birth?')">🔊</button>
+    </label>
+</section>
+
+<section class="contact-info-section">
+    <h2 id="contactInfoTitle">Contact Information</h2>
+    <label id="streetAddressLabel">Street Address:
+        <input type="text" name="streetAddress" id="streetAddress" placeholder="Street Address">
+        <button type="button" class="voice-icon" onclick="startVoiceInput('streetAddress')">🎤</button>
+        <button type="button" class="speak-icon" onclick="startSpeak('What is your street address?')">🔊</button>
+    </label>
+    <br>
+    <label id="cityLabel">City:
+        <input type="text" name="city" id="city" placeholder="City">
+        <button type="button" class="voice-icon" onclick="startVoiceInput('city')">🎤</button>
+        <button type="button" class="speak-icon" onclick="startSpeak('What city do you live in?')">🔊</button>
+    </label>
+    <br>
+    <label id="stateProvinceLabel">State/Province:
+        <input type="text" name="stateProvince" id="stateProvince" placeholder="State/Province">
+        <button type="button" class="voice-icon" onclick="startVoiceInput('stateProvince')">🎤</button>
+        <button type="button" class="speak-icon" onclick="startSpeak('What is your state or province?')">🔊</button>
+    </label>
+    <br>
+    <label id="zipCodeLabel">Postal/Zip Code:
+        <input type="text" name="zipCode" id="zipCode" placeholder="Postal/Zip Code">
+        <button type="button" class="voice-icon" onclick="startVoiceInput('zipCode')">🎤</button>
+        <button type="button" class="speak-icon" onclick="startSpeak('What is your postal or zip code?')">🔊</button>
+    </label>
+    <br>
+    <label id="emailLabel">Email:
+        <input type="email" name="email" id="email" placeholder="Email">
+        <button type="button" class="voice-icon" onclick="handleContactInfoVoiceInput('email')">🎤</button>
+        <button type="button" class="speak-icon" onclick="startSpeak('What is your email address?')">🔊</button>
+    </label>
+    <br>
+    <label id="phoneNumberLabel">Phone Number:
+        <input type="tel" name="phoneNumber" id="phoneNumber" placeholder="Phone Number">
+        <button type="button" class="voice-icon" onclick="handleContactInfoVoiceInput('phoneNumber')">🎤</button>
+        <button type="button" class="speak-icon" onclick="startSpeak('What is your phone number?')">🔊</button>
+    </label>
+</section>
+<section class="other-applicants-section">
+    <h2 id="otherApplicantsTitle">Other Applicants</h2>
+    <label id="applicantTypeLabel">Applicant Type:
+        <select name="applicantType" id="applicantType">
+            <option value="">Select</option>
+            <option value="Partner">Partner</option>
+            <option value="Child">Child</option>
+            <option value="Single">Single</option>
+            <option value="Married">Married</option>
+            <option value="Divorced">Divorced</option>
+            <option value="Widowed">Widowed</option>
+            <option value="Other">Other</option>
+        </select>
+        <button type="button" class="voice-icon" onclick="handleVoiceInputForOtherApplicants('applicantType')">🎤</button>
+        <button type="button" class="speak-icon" onclick="handleSpeak('What is the applicant type?')">🔊</button>
+    </label>
+    <br>
+    <label id="applicantFullNameLabel">Full Name:
+        <input type="text" name="applicantFullName" id="applicantFullName" placeholder="Full Name">
+        <button type="button" class="voice-icon" onclick="handleVoiceInputForOtherApplicants('applicantFullName')">🎤</button>
+        <button type="button" class="speak-icon" onclick="handleSpeak('What is the applicant\'s full name?')">🔊</button>
+    </label>
+    <br>
+    <label id="applicantGenderLabel">Gender:
+        <select name="applicantGender" id="applicantGender">
+            <option value="">Select</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Other">Other</option>
+        </select>
+        <button type="button" class="voice-icon" onclick="handleVoiceInputForOtherApplicants('applicantGender')">🎤</button>
+        <button type="button" class="speak-icon" onclick="handleSpeak('What is the applicant\'s gender?')">🔊</button>
+    </label>
+    <br>
+    <label id="applicantDobLabel">Date of Birth:
+        <input type="date" name="applicantDob" id="applicantDob">
+        <button type="button" class="voice-icon" onclick="handleVoiceInputForOtherApplicants('applicantDob')">🎤</button>
+        <button type="button" class="speak-icon" onclick="handleSpeak('What is the applicant\'s date of birth?')">🔊</button>
+    </label>
+</section>
+<section class="signature-section">
+    <label id="digitalSignatureLabel" for="digitalSignature">Upload Signature:</label>
+    <canvas id="signatureCanvas" width="40" height="30" style="border: 1px solid #ccc;"></canvas>
+</section>
+<section class="submit-section">
+    <!-- Redirect to last.html with a query parameter -->
+    <a href="/last?submitted=true">
+        <button id="submitButton" type="submit">Submit</button>
+    </a>
+</section>
+<style>
+    /* Personal Information Section */
+    .personal-info-section {
+        border: 2px solid #4CAF50; /* Green Border */
+        padding: 20px;
+        margin-bottom: 20px;
+    }
+    /* Contact Information Section */
+    .contact-info-section {
+        border: 2px solid #2196F3; /* Blue Border */
+        padding: 20px;
+        margin-bottom: 20px;
+    }
+    /* Other Applicants Section */
+    .other-applicants-section {
+        border: 2px solid #FF9800; /* Orange Border */
+        padding: 20px;
+        margin-bottom: 20px;
+    }
+    /* Signature Section */
+    .signature-section {
+        border: 2px solid #9C27B0; /* Purple Border */
+        padding: 20px;
+        margin-bottom: 20px;
+    }
+    /* Submit Section */
+    .submit-section {
+    border: 2px solid #E91E63; /* Pink Border */
+    padding: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center; /* Centers the content (submit button) horizontally */
+    align-items: center; /* Centers the content vertically */
+}
+#submitButton {
+    background-color: #ec40b6; /* Pink background for the button */
+    color: white; /* White text on the button */
+    padding: 10px 20px;
+    font-size: 40px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Smooth hover effect */
+}
+#submitButton:hover {
+    background-color: #D81B60; /* Darker pink on hover */
+}
+</style>       
+        </form>
+     </div>
+    <script>
+        // Function for voice input
+        function handleVoiceInput(fieldId) {
+            console.log(`Voice input started for: ${fieldId}`);
+            // Add your voice input logic here
+        }
+
+        // Function for text-to-speech
+        function handleSpeak(questionText) {
+            const speech = new SpeechSynthesisUtterance(questionText);
+            speech.lang = 'en-US'; // Set language
+            speech.rate = 1; // Adjust speech rate
+            speech.pitch = 1; // Adjust pitch
+            window.speechSynthesis.speak(speech);
+        }
+       // Function for speaking a question
+function speakQuestion(questionText) {
+    const speech = new SpeechSynthesisUtterance(questionText);
+    speech.lang = 'en-US'; // Set language
+    speech.rate = 1; // Adjust speech rate
+    speech.pitch = 1; // Adjust pitch
+    window.speechSynthesis.speak(speech);
+}
+// Function for starting voice input (placeholder logic)
+function startVoiceInput(fieldId) {
+    console.log(`Voice input started for: ${fieldId}`);
+    // Add your voice input handling logic here, e.g., integrating with a voice recognition API
+}
+// Specific function for handling voice input for contact info fields
+function handleContactInfoVoiceInput(fieldId) {
+    console.log(`Voice input started for contact field: ${fieldId}`);
+    // Add specific logic for contact info voice input handling if needed
+}
+// Example to show how the voice function would be triggered
+function startSpeak(questionText) {
+    const speech = new SpeechSynthesisUtterance(questionText);
+    speech.lang = 'en-US'; // Set language
+    speech.rate = 1; // Set rate of speech
+    speech.pitch = 1; // Set pitch
+    window.speechSynthesis.speak(speech);
+}
+        // Configure speech recognition
+const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+recognition.lang = 'en-US'; // Use 'en-IN' for better support for Indian English
+// Function to start voice input for a given input field
+function startVoiceInput(elementId) {
+    console.log(`Starting voice input for ${elementId}`);
+    recognition.start();
+    recognition.onresult = function(event) {
+        let spokenText = event.results[0][0].transcript.trim();
+        console.log(`Spoken Text for ${elementId}: ${spokenText}`);
+        const element = document.getElementById(elementId);
+        if (!element) {
+            console.error(`Element with ID ${elementId} not found.`);
+            return;
+        }
+        // Helper function to convert words to numbers
+        function wordsToNumbers(words) {
+            const wordToNumberMap = {
+                "zero": 0, "one": 1, "two": 2, "three": 3, "four": 4, 
+                "five": 5, "six": 6, "seven": 7, "eight": 8, "nine": 9,
+                "ten": 10, "eleven": 11, "twelve": 12, "thirteen": 13, 
+                "fourteen": 14, "fifteen": 15, "sixteen": 16, 
+                "seventeen": 17, "eighteen": 18, "nineteen": 19,
+                "twenty": 20, "thirty": 30, "forty": 40, "fifty": 50,
+                "sixty": 60, "seventy": 70, "eighty": 80, "ninety": 90,
+                "hundred": 100
+            };
+            const wordsArray = words.toLowerCase().trim().split(/[\s-]+/);
+            let number = 0;
+            let tempNumber = 0;
+            for (const word of wordsArray) {
+                if (wordToNumberMap[word] !== undefined) {
+                    tempNumber += wordToNumberMap[word];
+                } else if (word === "hundred") {
+                    tempNumber *= 100;
+                } else {
+                    return NaN; // Return NaN if the input contains unrecognized words
+                }
+            }
+            number += tempNumber;
+            return number;
+        }
+        // Handle specific cases based on the element type
+        if (element.type === 'text' || element.tagName === 'TEXTAREA') {
+            if (elementId === 'firstName') {
+                spokenText = spokenText.replace(/\s+/g, ''); // Remove spaces in the first name
+                spokenText = capitalizeFirstLetter(spokenText);
+            } else {
+                spokenText = capitalizeFirstLetter(spokenText);
+            }
+            element.value = spokenText;
+        } else if (elementId === 'age') {
+            // Convert spoken text to numeric if possible
+            let numericAge = isNaN(spokenText) ? wordsToNumbers(spokenText) : parseInt(spokenText, 10);
+
+            if (!isNaN(numericAge)) {
+                element.value = numericAge;
+            } else {
+                alert(`Invalid age format: "${spokenText}". Please say a valid number.`);
+            }
+        } else if (elementId === 'gender') {
+            if (spokenText.toLowerCase() === 'mail') spokenText = 'male';
+
+            const genderOptions = {
+                male: "Male",
+                female: "Female",
+                other: "Other"
+            };
+            if (genderOptions[spokenText.toLowerCase()]) {
+                element.value = genderOptions[spokenText.toLowerCase()];
+                return;
+            } else {
+                alert(`Option "${spokenText}" not found for gender.`);
+            }
+        } else if (elementId === 'status') {
+            const statusOptions = {
+                single: "Single",
+                married: "Married",
+                student: "Student",
+                employed: "Employed",
+                other: "Other"
+            };
+            if (statusOptions[spokenText.toLowerCase()]) {
+                element.value = statusOptions[spokenText.toLowerCase()];
+                return;
+            } else {
+                alert(`Option "${spokenText}" not found for status.`);
+            }
+        } else if (element.tagName === 'SELECT') {
+            const options = Array.from(element.options).map(option => option.value.toLowerCase());
+            const match = options.find(option => option === spokenText.toLowerCase());
+            if (match) {
+                element.value = match;
+            } else {
+                alert(`Option "${spokenText}" not found for ${elementId}.`);
+            }
+        } else if (elementId === 'dob') {
+            handleDateOfBirthInput(spokenText, elementId);
+        } else {
+            console.error(`Unsupported element type for ID ${elementId}`);
+        }
+    };
+    recognition.onerror = (event) => {
+        console.error("Error:", event.error);
+        alert("Error recognizing speech. Please try again.");
+    };
+    recognition.onend = () => {
+        console.log("Speech recognition stopped.");
+    };
+}
+// Helper function to capitalize the first letter of a string and lower case the rest
+function capitalizeFirstLetter(input) {
+    if (!input) return input;
+    return input
+        .split(' ')
+        .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+        .join(' ');
+}
+// Function to handle date of birth input with various formats
+function handleDateOfBirthInput(transcript, inputId) {
+    console.log(`Handling DOB input: ${transcript}`);
+    let datePattern1 = /\b(\d{1,2})\/(\d{1,2})\/(\d{4})\b/;  // MM/DD/YYYY
+    let datePattern2 = /\b(\d{1,2})\s+(\w+)\s+(\d{4})\b/;    // DD Month YYYY
+    let datePattern3 = /\b(\w+)\s+(\d{1,2})(st|nd|rd|th)?\s*,?\s*(\d{4})\b/; // Month DDth, YYYY
+    let datePattern4 = /\b(\w+)\s+(\d{1,2})\s+(\d{4})\b/;    // Month DD YYYY format
+    let match1 = transcript.match(datePattern1);
+    let match2 = transcript.match(datePattern2);
+    let match3 = transcript.match(datePattern3);
+    let match4 = transcript.match(datePattern4);
+    let date = null;
+    if (match1) {
+        console.log(`Matched MM/DD/YYYY format`);
+        const month = match1[1].padStart(2, '0');
+        const day = match1[2].padStart(2, '0');
+        const year = match1[3];
+        date = `${year}-${month}-${day}`;
+    } else if (match2) {
+        console.log(`Matched DD Month YYYY format`);
+        const day = match2[1].padStart(2, '0');
+        const month = convertMonthToNumber(match2[2]);
+        const year = match2[3];
+        if (month !== null) {
+            date = `${year}-${month}-${day}`;
+        }
+    } else if (match3) {
+        console.log(`Matched Month DDth, YYYY format`);
+        const month = convertMonthToNumber(match3[1]);
+        const day = match3[2].padStart(2, '0');
+        const year = match3[4];
+        if (month !== null) {
+            date = `${year}-${month}-${day}`;
+        }
+    } else if (match4) {
+        console.log(`Matched Month DD YYYY format`);
+        const month = convertMonthToNumber(match4[1]);
+        const day = match4[2].padStart(2, '0');
+        const year = match4[3];
+        if (month !== null) {
+            date = `${year}-${month}-${day}`;
+        }
+    }
+    if (date) {
+        document.getElementById(inputId).value = date;
+    } else {
+        console.error(`Invalid date format: "${transcript}". Please use DD Month YYYY format.`);
+        alert(`Invalid date format: "${transcript}". Please use DD Month YYYY format.`);
+    }
+}
+// Helper function to convert month name to number
+function convertMonthToNumber(monthName) {
+    const months = {
+        "January": "01", "February": "02", "March": "03", "April": "04", "May": "05",
+        "June": "06", "July": "07", "August": "08", "September": "09", "October": "10",
+        "November": "11", "December": "12"
+    };
+    return months[monthName] || null;
+}
+function handleContactInfoVoiceInput(elementId) {
+        const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+        recognition.lang = 'en-US';
+        recognition.interimResults = false;
+        recognition.maxAlternatives = 1;
+        recognition.start();
+        recognition.onresult = (event) => {
+            let spokenText = event.results[0][0].transcript.trim().toLowerCase();
+            console.log(`Raw Spoken Text for ${elementId}: ${spokenText}`);
+            const element = document.getElementById(elementId);
+            if (elementId === 'email') {
+                // Process and validate email
+                spokenText = spokenText.replace(/\s+/g, '').replace(/at/g, '@').replace(/dot/g, '.'); // Replace "at" and "dot"
+                console.log(`Processed Email: ${spokenText}`);
+                const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // Email validation pattern
+                if (emailPattern.test(spokenText)) {
+                    element.value = spokenText;
+                    console.log(`Email set to: ${spokenText}`);
+                } else {
+                    alert('Invalid email format. Please try again.');
+                    console.log('Invalid email format.');
+                }
+            } else if (elementId === 'phoneNumber') {
+                // Process and validate phone number
+                let processedNumber = spokenText.replace(/\D/g, ''); // Remove non-numeric characters
+                console.log(`Processed Phone Number: ${processedNumber}`);
+                const phonePattern = /^[0-9]{10,15}$/; // Accept 10–15 digits
+                if (phonePattern.test(processedNumber)) {
+                    element.value = processedNumber;
+                    console.log(`Phone number set to: ${processedNumber}`);
+                } else {
+                    alert('Invalid phone number format. Please try again.');
+                    console.log('Invalid phone number format.');
+                }
+            } else {
+                // Default behavior
+                element.value = spokenText;
+                console.log(`Value set for ${elementId}: ${spokenText}`);
+            }
+        };
+        recognition.onerror = (event) => {
+            console.error('Speech recognition error:', event.error);
+            alert('Sorry, there was an error with voice recognition.');
+        };
+    }
+    function handleVoiceInputForOtherApplicants(fieldId) {
+    const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+    recognition.lang = 'en-US';
+    recognition.interimResults = false;
+    recognition.maxAlternatives = 1;
+    recognition.start();
+    recognition.onresult = (event) => {
+        const spokenText = event.results[0][0].transcript.trim();
+        console.log(`Spoken Text for ${fieldId}: "${spokenText}"`);
+        const element = document.getElementById(fieldId);
+        if (!element) {
+            console.error(`No element found for ID: ${fieldId}`);
+            return;
+        }
+        if (fieldId === 'applicantType' || fieldId === 'applicantGender') {
+            const statusOptions = {
+                partner: "Partner",
+                child: "Child",
+                single: "Single",
+                married: "Married",
+                divorced: "Divorced",
+                widowed: "Widowed",
+                other: "Other",
+                male: "Male",
+                mail: "Male",
+                female: "Female",
+                other: "Other"
+            };
+            // Check against predefined options
+            if (statusOptions[spokenText.toLowerCase()]) {
+                element.value = statusOptions[spokenText.toLowerCase()];
+                console.log(`Dropdown value set to: "${element.value}"`);
+                return;
+            } else {
+                alert(`Option "${spokenText}" not found for ${fieldId}.`);
+                console.error(`Invalid dropdown selection for ${fieldId}: "${spokenText}"`);
+            }
+        } else if (fieldId === 'applicantFullName') {
+            // Capitalize each word in the full name
+            element.value = capitalizeFirstLetter(spokenText);
+            console.log(`Full Name set to: "${element.value}"`);
+        } else if (fieldId === 'applicantDob') {
+            handleDateOfBirthInput(spokenText, fieldId);
+        } else {
+            console.error(`Unsupported field type for ID ${fieldId}`);
+        }
+    };
+    recognition.onerror = (event) => {
+        console.error("Error:", event.error);
+        alert("Error recognizing speech. Please try again.");
+    };
+    recognition.onend = () => {
+        console.log("Speech recognition stopped.");
+    };
+}
+// Function to handle date of birth input with various formats
+function handleDateOfBirthInput(transcript, inputId) {
+    console.log(`Handling DOB input: ${transcript}`);
+
+    const patterns = [
+        /\b(\d{1,2})\/(\d{1,2})\/(\d{4})\b/,             // MM/DD/YYYY
+        /\b(\d{1,2})\s+(\w+)\s+(\d{4})\b/,              // DD Month YYYY
+        /\b(\w+)\s+(\d{1,2})(?:st|nd|rd|th)?\s*,?\s*(\d{4})\b/, // Month DD, YYYY
+        /\b(\w+)\s+(\d{1,2})\s+(\d{4})\b/               // Month DD YYYY
+    ];
+    let date = null;
+    for (const pattern of patterns) {
+        const match = transcript.match(pattern);
+        if (match) {
+            console.log(`Matched pattern: ${pattern}`);
+            if (pattern === patterns[0]) {
+                // MM/DD/YYYY
+                const month = match[1].padStart(2, '0');
+                const day = match[2].padStart(2, '0');
+                const year = match[3];
+                date = `${year}-${month}-${day}`;
+            } else if (pattern === patterns[1] || pattern === patterns[3]) {
+                // DD Month YYYY or Month DD YYYY
+                const day = match[1].padStart(2, '0');
+                const month = convertMonthToNumber(match[2]);
+                const year = match[3];
+                if (month) {
+                    date = `${year}-${month}-${day}`;
+                }
+            } else if (pattern === patterns[2]) {
+                // Month DDth, YYYY
+                const month = convertMonthToNumber(match[1]);
+                const day = match[2].padStart(2, '0');
+                const year = match[4];
+                if (month) {
+                    date = `${year}-${month}-${day}`;
+                }
+            }
+            break;
+        }
+    }
+    if (date) {
+        document.getElementById(inputId).value = date;
+        console.log(`Date of Birth set to: "${date}"`);
+    } else {
+        console.error(`Invalid date format: "${transcript}". Please use formats like 'DD Month YYYY' or 'MM/DD/YYYY'.`);
+        alert(`Invalid date format: "${transcript}". Please use formats like 'DD Month YYYY' or 'MM/DD/YYYY'.`);
+    }
+}
+// Helper function to convert month name to number
+function convertMonthToNumber(monthName) {
+    const months = {
+        january: "01", february: "02", march: "03", april: "04", may: "05",
+        june: "06", july: "07", august: "08", september: "09", october: "10",
+        november: "11", december: "12"
+    };
+    return months[monthName.toLowerCase()] || null;
+}
+// Helper function to capitalize the first letter of each word
+function capitalizeFirstLetter(input) {
+    if (!input) return input;
+    return input
+        .split(' ')
+        .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+        .join(' ');
+}
+         function openSignup() {
+        window.location.href = '/project2/templates/signup-btn.html';
+    }
+    </script>
+</body>
+</html>

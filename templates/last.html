@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insurance Form</title>
+    <style>
+        .submit-section {
+            border: 2px solid #E91E63; /* Pink Border */
+            padding: 20px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        #thankYouMessage {
+            display: none;
+            text-align: center;
+            padding: 20px;
+        }
+        #submitButton {
+            background-color: #E91E63;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .quote {
+            font-style: italic;
+            font-size: 18px;
+            color: #250af2;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Thank you message that will be displayed if the query parameter is found -->
+    <div id="thankYouMessage">
+        <h2>Thank You!</h2>
+        <p>Your insurance request has been successfully submitted. We will get back to you shortly.</p>
+        <p class="quote">"Your health is our priority. With the right coverage, you're always in good hands."</p>
+    </div>
+
+    <script>
+        // Check if the "submitted" query parameter is present in the URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const submitted = urlParams.get('submitted');
+
+        if (submitted === 'true') {
+            // Show the thank you message
+            document.getElementById('thankYouMessage').style.display = 'block';
+        }
+    </script>
+
+</body>
+</html>
